@@ -13,6 +13,9 @@ val kotlinVersion=project.properties.get("kotlinVersion")
 repositories {
     mavenCentral()
 }
+allOpen {
+    annotations("javax.inject.Singleton")
+}
 
 micronaut {
     runtime("lambda")
@@ -36,6 +39,7 @@ dependencies {
     testImplementation("io.micronaut:micronaut-http-client")
     implementation("com.amazonaws:aws-lambda-java-events:3.8.0")
 
+//    testImplementation("io.micronaut.aws:micronaut-function-aws-test")
     testImplementation("io.micronaut.test:micronaut-test-kotest")
     testImplementation("io.kotest:kotest-runner-junit5-jvm:4.3.0")
     testImplementation( "io.mockk:mockk:1.10.5")

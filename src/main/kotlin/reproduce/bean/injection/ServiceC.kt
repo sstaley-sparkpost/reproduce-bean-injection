@@ -1,6 +1,6 @@
 package reproduce.bean.injection
 
-class ServiceC {
+open class ServiceC {
     fun doThing(): String {
        return "Doing thing in Service C"
     }
