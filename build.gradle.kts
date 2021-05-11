@@ -16,7 +16,7 @@ repositories {
 
 micronaut {
     runtime("lambda")
-    testRuntime("junit5")
+    testRuntime("kotest")
     processing {
         incremental(true)
         annotations("reproduce.bean.injection.*")
@@ -24,17 +24,20 @@ micronaut {
 }
 
 dependencies {
+    kaptTest("io.micronaut:micronaut-inject-java")
     implementation("io.micronaut:micronaut-runtime")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
-    implementation("io.kotest:kotest-runner-junit5-jvm:4.1.1")
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
     implementation("io.micronaut.aws:micronaut-function-aws")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     testImplementation("io.micronaut:micronaut-http-client")
     implementation("com.amazonaws:aws-lambda-java-events:3.8.0")
+
+    testImplementation("io.micronaut.test:micronaut-test-kotest")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.3.0")
     testImplementation( "io.mockk:mockk:1.10.5")
     testImplementation("io.kotest:kotest-assertions-core:4.3.0")
 }
